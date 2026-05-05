@@ -1,0 +1,121 @@
+{
+  "players": [
+    {
+      "player_id": "player_a",
+      "role": "A",
+      "display_name": "Player A",
+      "subtitle": "Tiny Cove keeper"
+    },
+    {
+      "player_id": "player_b",
+      "role": "B",
+      "display_name": "Player B",
+      "subtitle": "Lantern pathfinder"
+    }
+  ],
+  "lobsters": [
+    {
+      "lobster_id": "lobster_a",
+      "owner_role": "A",
+      "display_name": "Lobster A",
+      "subtitle": "Carries warm shell notes"
+    },
+    {
+      "lobster_id": "lobster_b",
+      "owner_role": "B",
+      "display_name": "Lobster B",
+      "subtitle": "Keeps watch by the tide"
+    }
+  ],
+  "mood_options": [
+    {
+      "mood_id": "sunny",
+      "label": "Sunny",
+      "description": "A bright little glow for the Cove."
+    },
+    {
+      "mood_id": "cosy",
+      "label": "Cosy",
+      "description": "Blanket-warm and shell-snug."
+    },
+    {
+      "mood_id": "playful",
+      "label": "Playful",
+      "description": "Ready for tiny seaside mischief."
+    },
+    {
+      "mood_id": "foggy",
+      "label": "Foggy",
+      "description": "Soft around the edges today."
+    },
+    {
+      "mood_id": "stormy",
+      "label": "Stormy",
+      "description": "Big clouds, brave little boots."
+    },
+    {
+      "mood_id": "quiet",
+      "label": "Quiet",
+      "description": "A gentle tide and a small lantern."
+    }
+  ],
+  "note_templates": [
+    {
+      "template_id": "note_lantern_shell",
+      "text": "I left a tiny shell by the lantern."
+    },
+    {
+      "template_id": "note_lobster_important",
+      "text": "Your lobster looked very important today."
+    },
+    {
+      "template_id": "note_tide_sparkle",
+      "text": "The tide saved you a sparkle."
+    },
+    {
+      "template_id": "note_glow_watch",
+      "text": "A little glow is keeping watch for you."
+    }
+  ],
+  "chapter": {
+    "chapter_id": "ch_lantern_that_forgot",
+    "title": "The Lantern That Forgot",
+    "theme": "noticing_each_other",
+    "hook": "A small Cove lantern has forgotten how to glow. The lobsters think it needs two tiny kindnesses from the tide.",
+    "paths": {
+      "A": {
+        "path_id": "path_a_lantern_spark",
+        "owner_role": "A",
+        "label": "Player A Path",
+        "step_text": "Find a glow shell near the tidepool.",
+        "complete_text": "Player A found a glow shell.",
+        "completion_signal": "signal_a_glow_shell"
+      },
+      "B": {
+        "path_id": "path_b_shell_lens",
+        "owner_role": "B",
+        "label": "Player B Path",
+        "step_text": "Polish a shell lens for the lantern.",
+        "complete_text": "Player B polished the shell lens.",
+        "completion_signal": "signal_b_shell_lens"
+      }
+    },
+    "tidegate": {
+      "tidegate_id": "tg_lantern_glow",
+      "required_signals": [
+        "signal_a_glow_shell",
+        "signal_b_shell_lens"
+      ],
+      "locked_text": "The lantern is dim. A first glow shell would help it remember.",
+      "half_lit_text": "The lantern is half-lit. The tide is gathering.",
+      "ready_text": "Both lobsters have brought their glow shells. Our Tidegate opens."
+    },
+    "resolution_text": "The Cove lantern glows softly again, and its light wiggles across the water.",
+    "reward": {
+      "reward_id": "reward_lighthouse_glow_keepsake",
+      "type": "Keepsake",
+      "title": "Lighthouse Glow Keepsake",
+      "description": "A placeholder memory reward for finishing the shared Tidegate."
+    }
+  }
+}
