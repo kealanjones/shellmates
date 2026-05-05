@@ -19,7 +19,7 @@ func load_state() -> Dictionary:
 		push_error("Local prototype save was not a valid JSON object.")
 		return {}
 
-	return parsed
+	return parsed as Dictionary
 
 
 func save_state(app_state) -> bool:

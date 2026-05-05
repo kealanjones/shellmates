@@ -99,6 +99,53 @@
 - The local save model is intentionally simple and may need revision once
   approved data/privacy architecture exists.
 
+## Runtime Stabilisation Update
+- Date: 2026-05-05
+- Branch: `feature/milestone-1-prototype`
+- Project run status: not run in this shell because `godot`, `godot4`, and a
+  Godot app bundle were not available from the local command line or
+  `/Applications`.
+
+### Parser And Runtime Issues Fixed
+- Replaced remaining dynamic JSON returns with explicit `Dictionary` casts in
+  prototype content loading and local save loading.
+- Removed typed `Dictionary` locals around `Dictionary.get()` results in story
+  progress and story resolution code, then normalised those values with
+  `typeof(...)` checks before use.
+- Confirmed the main scene is configured as `res://scenes/app/Main.tscn`.
+- Confirmed all `res://` script and scene paths referenced by project, scenes,
+  and scripts resolve to existing files.
+- Confirmed all GDScript files have valid `extends` declarations.
+- Confirmed no `:=` inference declarations or malformed `var` declarations
+  remain in GDScript.
+
+### Files Changed In Stabilisation
+- `shellmates-game/godot/scripts/data/content_repository.gd`
+- `shellmates-game/godot/scripts/systems/save_service.gd`
+- `shellmates-game/godot/scripts/systems/story_progress_system.gd`
+- `shellmates-game/godot/scripts/ui/story_screen.gd`
+- `studio/milestones/MILESTONE_1_ENGINEERING_NOTES.md`
+
+### Remaining Known Risks
+- A real Godot 4.x launch is still required to confirm there are no editor-only
+  parser warnings, import warnings, or UI layout issues.
+- Save/load needs an app restart smoke test inside Godot to verify the
+  `user://shellmates_prototype_save.json` path behaves as expected on the
+  target platform.
+- The prototype is still functional placeholder UI, so mobile readability must
+  be checked on a small portrait device before M1 QA signoff.
+
+### Recommended Next QA Checks
+1. Open `shellmates-game/godot/project.godot` in Godot 4.x.
+2. Run the main scene and confirm the Cove loads first.
+3. Switch between Player A and Player B.
+4. Set a mood for each role and confirm the Cove updates.
+5. Send a Shell note and confirm it appears on the Cove.
+6. Complete Player A and Player B story paths in both orders.
+7. Confirm Our Tidegate unlocks only after both paths complete.
+8. Restart the project and confirm local save/load restores mood, note, story,
+   and Tidegate state.
+
 ## Recommended Next Engineering Tasks
 1. Open the project in Godot 4.x and resolve any parser/import warnings.
 2. Run through the full manual flow on desktop and a portrait mobile target.

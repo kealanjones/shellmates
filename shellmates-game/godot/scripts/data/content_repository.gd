@@ -19,5 +19,5 @@ func load_content() -> Dictionary:
 		content = {}
 		return content
 
-	content = parsed
+	content = parsed as Dictionary
 	return content

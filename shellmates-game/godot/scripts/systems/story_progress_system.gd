@@ -27,7 +27,9 @@ func complete_active_path(app_state) -> bool:
 
 
 func evaluate_tidegate(app_state) -> void:
-	var tidegate: Dictionary = app_state.chapter.get("tidegate", {})
+	var tidegate = app_state.chapter.get("tidegate", {})
+	if typeof(tidegate) != TYPE_DICTIONARY:
+		tidegate = {}
 	var required_signals = tidegate.get("required_signals", [])
 	var signals = app_state.story_state.get("completion_signals", [])
 	if typeof(required_signals) != TYPE_ARRAY or typeof(signals) != TYPE_ARRAY:
@@ -46,7 +48,9 @@ func evaluate_tidegate(app_state) -> void:
 
 
 func get_tidegate_status_text(app_state) -> String:
-	var tidegate: Dictionary = app_state.chapter.get("tidegate", {})
+	var tidegate = app_state.chapter.get("tidegate", {})
+	if typeof(tidegate) != TYPE_DICTIONARY:
+		tidegate = {}
 	if bool(app_state.story_state.get("reward_granted", false)):
 		return str(tidegate.get("ready_text", "Our Tidegate opens."))
 
@@ -67,7 +71,7 @@ func get_path_status_text(app_state, role: String) -> String:
 
 
 func _get_path_data(app_state, role: String) -> Dictionary:
-	var paths: Dictionary = app_state.chapter.get("paths", {})
+	var paths = app_state.chapter.get("paths", {})
 	if typeof(paths) != TYPE_DICTIONARY:
 		return {}
 	var path_data = paths.get(role, {})
