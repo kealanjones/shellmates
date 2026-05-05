@@ -33,4 +33,4 @@ func _add_note_template(content: VBoxContainer, template: Dictionary) -> void:
 	var template_id: String = str(template.get("template_id", ""))
 	var text: String = str(template.get("text", "A tiny shell note."))
 	var card: VBoxContainer = UI.add_card(content, "Shell Note Template", "\"%s\"" % text)
-	card.add_child(UI.make_button("Send or update latest note", Callable(app_controller, "send_shell_note").bind(template_id)))
+	card.add_child(UI.make_button("Send Shell note", Callable(app_controller, "send_shell_note").bind(template_id)))

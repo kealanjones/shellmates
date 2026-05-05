@@ -34,7 +34,9 @@ func _ready() -> void:
 
 
 func _add_resolution(content: VBoxContainer) -> void:
-	var reward: Dictionary = app_state.chapter.get("reward", {})
+	var reward = app_state.chapter.get("reward", {})
+	if typeof(reward) != TYPE_DICTIONARY:
+		reward = {}
 	var body: String = "%s\nReward: %s" % [
 		str(app_state.chapter.get("resolution_text", "The Cove glows softly again.")),
 		str(reward.get("title", "Placeholder Keepsake"))

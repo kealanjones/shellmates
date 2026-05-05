@@ -27,6 +27,7 @@ func _ready() -> void:
 	UI.add_card(content, "Mood Traces", _mood_summary())
 	UI.add_card(content, "Latest Shell Note", app_state.get_latest_note_summary())
 	UI.add_card(content, str(app_state.chapter.get("title", "Story Chapter")), app_state.get_story_status_summary())
+	_add_story_tidegate_cards(content)
 
 	UI.add_small_gap(content)
 	content.add_child(UI.make_button("Set mood", Callable(app_controller, "show_mood")))
@@ -48,6 +49,14 @@ func _add_lobster_cards(content: VBoxContainer) -> void:
 	var lobster_b: Dictionary = app_state.get_lobster("B")
 	UI.add_card(content, str(lobster_a.get("display_name", "Lobster A")), str(lobster_a.get("subtitle", "Prototype lobster")))
 	UI.add_card(content, str(lobster_b.get("display_name", "Lobster B")), str(lobster_b.get("subtitle", "Prototype lobster")))
+
+
+func _add_story_tidegate_cards(content: VBoxContainer) -> void:
+	var my_role: String = str(app_state.active_role)
+	var their_role: String = app_state.get_partner_role()
+	UI.add_card(content, "My Path", app_controller.get_story_path_status(my_role))
+	UI.add_card(content, "Their Path", app_controller.get_story_path_status(their_role))
+	UI.add_card(content, "Our Tidegate", app_controller.get_tidegate_status_text())
 
 
 func _mood_summary() -> String:
